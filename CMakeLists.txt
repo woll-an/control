@@ -10,12 +10,8 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 find_package(Eigen3 REQUIRED)
 find_package(GTest REQUIRED)
 
-set(THIRDPARTY_SOURCES_DIR "${CMAKE_SOURCE_DIR}/3rdparty" CACHE PATH
-        "Directory for third-party sources")
-
 add_library(lqr STATIC lqr.cpp)
 target_link_libraries(lqr PRIVATE Eigen3::Eigen3)
-# set_property(TARGET lqr PROPERTY POSITION_INDEPENDENT_CODE ON)
 
 add_executable(lqr-tests test.cpp)
 target_link_libraries(lqr-tests PUBLIC Eigen3::Eigen3 GTest::GTest GTest::Main lqr)
